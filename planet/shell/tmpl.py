@@ -227,6 +227,7 @@ def template_info(source):
     # date/time information
     date = time.gmtime()
     output['date'] = PlanetDate(date)
+    output["date_local"] = PlanetDate(time.localtime())
     output['date_iso'] = Rfc3399(date)
     output['date_822'] = Rfc822(date)
 
