@@ -56,6 +56,9 @@ if __name__ == "__main__":
         else:
             config_file.append(arg)
 
+    import locale
+    locale.setlocale(locale.LC_ALL, "")
+
     from planet import config
     config.load(config_file or 'config.ini')
 
