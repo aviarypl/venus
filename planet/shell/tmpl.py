@@ -56,10 +56,12 @@ def Plain(value):
     return str(stripHtml(value))
 
 def PlanetDate(value):
-    return time.strftime(config.date_format(), value)
+    q = int(time.strftime(config.date_format_q_index(), value))
+    return time.strftime(config.date_format(), value).replace("%q", config.date_format_q()[q])
 
 def NewDate(value):
-    return time.strftime(config.new_date_format(), value)
+    q = int(time.strftime(config.date_format_q_index(), value))
+    return time.strftime(config.new_date_format(), value).replace("%q", config.date_format_q()[q])
 
 def Rfc822(value):
     return time.strftime("%a, %d %b %Y %H:%M:%S +0000", value)

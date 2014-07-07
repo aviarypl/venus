@@ -97,6 +97,7 @@ def __init__():
     define_planet('log_level', "WARNING")
     define_planet('log_format', "%(levelname)s:%(name)s:%(message)s")
     define_planet('date_format', "%B %d, %Y %I:%M %p")
+    define_planet('date_format_q_index', '')
     define_planet('new_date_format', "%B %d, %Y")
     define_planet('generator', 'Venus')
     define_planet('generator_uri', 'http://intertwingly.net/code/venus/')
@@ -112,6 +113,7 @@ def __init__():
     define_planet_int('feed_timeout', 20)
     define_planet_int('cache_keep_entries', 10)
 
+    define_planet_list('date_format_q')
     define_planet_list('template_files')
     define_planet_list('bill_of_materials')
     define_planet_list('template_directories', '.')
