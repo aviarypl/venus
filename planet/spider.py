@@ -93,7 +93,7 @@ def writeCache(feed_uri, feed_info, data):
         elif feed_uri == data.url:
             log.info("Updating feed %s", feed_uri)
         else:
-            log.info("Updating feed %s @ %s", feed_uri, data.url)
+            log.warning("Updating feed %s @ %s", feed_uri, data.url)
     elif data.status == 301 and data.has_key("entries") and len(data.entries)>0:
         log.warning("Feed has moved from <%s> to <%s>", feed_uri, data.url)
         data.feed['planet_http_location'] = data.url
@@ -102,7 +102,7 @@ def writeCache(feed_uri, feed_info, data):
         if feed_uri == data.url:
             log.info("Feed %s unchanged", feed_uri)
         else:
-            log.info("Feed %s unchanged @ %s", feed_uri, data.url)
+            log.warning("Feed %s unchanged @ %s", feed_uri, data.url)
 
         if not feed_info.feed.has_key('planet_message'):
             if feed_info.feed.has_key('planet_updated'):
@@ -117,9 +117,9 @@ def writeCache(feed_uri, feed_info, data):
                del feed_info.feed['planet_message']
 
     elif data.status == 410:
-        log.info("Feed %s gone", feed_uri)
+        log.warning("Feed %s gone", feed_uri)
     elif data.status == 408:
-        log.warning("Feed %s timed out", feed_uri)
+        log.warning("Feed %s timed out (408)", feed_uri)
     elif data.status >= 400:
         log.error("Error %d while updating feed %s", data.status, feed_uri)
     else:
@@ -415,7 +415,7 @@ def spiderPlanet(only_if_new = False):
             log.info("Feed %s already in cache", uri)
             continue
         if feed_info.feed.get('planet_http_status',None) == '410':
-            log.info("Feed %s gone", uri)
+            log.warning("Feed %s gone", uri)
             continue
 
         if threads and _is_http_uri(uri):
