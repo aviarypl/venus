@@ -88,7 +88,7 @@ def writeCache(feed_uri, feed_info, data):
     if data.status == 200 and data.has_key("url"):
         feed_info.feed['planet_http_location'] = data.url
         if data.has_key("entries") and len(data.entries) == 0:
-            log.warning("No data %s", feed_uri)
+            log.info("No data %s", feed_uri)
             feed_info.feed['planet_message'] = 'no data'
         elif feed_uri == data.url:
             log.info("Updating feed %s", feed_uri)
