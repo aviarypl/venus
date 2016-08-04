@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl">
+ <head>
+  <title><TMPL_VAR name></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-language" content="pl" />
+  <link rel="stylesheet" href="./style.css" type="text/css" />
+  <link rel="icon" href="./img.icon.m.16w.png" type="image/png" />
+  <link rel="alternate" type="application/atom+xml" title="Polska Planeta Mozilli" href="./feed.xml" />
+  <meta name="author" content="MozillaPL.org" />
+  <meta name="copyright" content="MozillaPL.org" />
+  <meta name="description" content="MozillaPL.org to polskie centrum Mozilli. Gromadzimy tłumaczy, programistów, sympatyków i użytkowników produktów Mozilli w Polsce... Udostępniamy polskie tłumaczenie Mozilli, Firefoksa oraz Thunderbirda..." />
+  <meta name="keywords" content="Mozilla PL, MozillaPL, polski, po polsku, tłumaczenie, polska, Mozilla, polskie, ustawienia, językowe, firefox, thunderbird, mozilla suite, sidebar, mozilla, przeglądarka, pocztowy, program, irc, edytor, html" />
+ </head>
+ <body>
+  <h1><TMPL_VAR name></h1>
+  <div id="sidebarBox">
+   <h2>Subskrypcje</h2>
+   <h3>Serwisy</h3>
+   <ul>
+<TMPL_LOOP Channels>
+ <TMPL_UNLESS blog>
+    <li><a href="<TMPL_VAR link ESCAPE="HTML">" title="<TMPL_VAR title ESCAPE="HTML">"><TMPL_VAR name></a> <a href="<TMPL_VAR url ESCAPE="HTML">" class="rssLink">(kanał RSS)</a></li>
+ </TMPL_UNLESS>
+</TMPL_LOOP>
+   </ul>
+   <h3>Blogi</h3>
+   <ul>
+<TMPL_LOOP Channels>
+ <TMPL_IF blog>
+    <li><a href="<TMPL_VAR link ESCAPE="HTML">" title="<TMPL_VAR title ESCAPE="HTML">"><TMPL_VAR name></a> <a href="<TMPL_VAR url ESCAPE="HTML">" class="rssLink">(kanał RSS)</a></li>
+ </TMPL_IF>
+</TMPL_LOOP>
+   </ul>
+   <br />
+   <br />
+   <a href=./feed.xml title=Atom>Kanał RSS</a>
+   <br />
+   <br />
+   <strong>Ostatnia aktualizacja:</strong>
+   <br /><TMPL_VAR date_local><br />
+   <br />
+   Powered by <a href=http://intertwingly.net/code/venus/>Venus</a>
+   <br />
+   <br />
+   <a href="https://github.com/aviarypl/venus/issues">Zgłoś błąd</a>
+   <br />
+   <a href=http://mozillapl.org/kontakt/>Kontakt</a>
+  </div>
+<TMPL_LOOP Items>
+
+  <TMPL_IF new_date>  <h2><TMPL_VAR new_date></h2>
+  </TMPL_IF>
+  <TMPL_IF new_channel>  <h3><a href="<TMPL_VAR channel_link ESCAPE="HTML">"><TMPL_IF channel_blog><TMPL_IF channel_title><TMPL_VAR channel_title><TMPL_ELSE><TMPL_VAR channel_name></TMPL_IF><TMPL_ELSE><TMPL_VAR channel_name></TMPL_IF></a></h3>
+  </TMPL_IF>
+  <TMPL_IF title>  <h4><a href="<TMPL_VAR link ESCAPE="HTML">"><TMPL_VAR title></a></h4>
+  </TMPL_IF>
+  <div><TMPL_VAR content></div>
+  <div><em><a href="<TMPL_VAR link ESCAPE="HTML">"><TMPL_IF author_name><TMPL_VAR author_name ESCAPE="HTML">, <TMPL_ELSE><TMPL_IF author><TMPL_VAR author ESCAPE="HTML">, <TMPL_ELSE><TMPL_IF channel_author_name><TMPL_VAR channel_author_name ESCAPE="HTML">, <TMPL_ELSE><TMPL_IF channel_author><TMPL_VAR channel_author ESCAPE="HTML">, <TMPL_ELSE><TMPL_VAR channel_name ESCAPE="HTML">, </TMPL_IF></TMPL_IF></TMPL_IF></TMPL_IF><TMPL_VAR date></a></em></div>
+</TMPL_LOOP>
+ </body>
+</html>

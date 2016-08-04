@@ -1,0 +1,5 @@
+# compiled templates
+*.tmplc
+# generated output
+www/feed.xml
+www/index.html

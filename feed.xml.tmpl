@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ <title><TMPL_VAR name></title>
+ <link href="https://planet.mozillapl.org" />
+ <link href="https://planet.mozillapl.org/feed.xml" rel="self" />
+ <id>https://planet.mozillapl.org/feed.xml</id>
+ <updated><TMPL_VAR date_iso></updated>
+ <icon>https://planet.mozillapl.org/img.icon.m.16w.png</icon>
+<TMPL_LOOP Items>
+ <entry<TMPL_IF channel_language> xml:lang="<TMPL_VAR channel_language>"</TMPL_IF>>
+  <title type="html"<TMPL_IF title_language> xml:lang="<TMPL_VAR title_language>"</TMPL_IF>><TMPL_IF channel_blog><TMPL_IF channel_title><TMPL_VAR channel_title ESCAPE="HTML"><TMPL_ELSE><TMPL_VAR channel_name ESCAPE="HTML"></TMPL_IF><TMPL_ELSE><TMPL_VAR channel_name ESCAPE="HTML"></TMPL_IF> — <TMPL_VAR title ESCAPE="HTML"></title>
+  <link href="<TMPL_VAR link ESCAPE="HTML">" />
+  <id><TMPL_VAR id ESCAPE="HTML"></id>
+  <updated><TMPL_VAR date_iso></updated>
+  <content type="html"<TMPL_IF content_language> xml:lang="<TMPL_VAR content_language>"</TMPL_IF>><TMPL_VAR content ESCAPE="HTML"></content>
+  <author>
+   <name><TMPL_IF author_name><TMPL_VAR author_name ESCAPE="HTML"><TMPL_ELSE><TMPL_IF author><TMPL_VAR author ESCAPE="HTML"><TMPL_ELSE><TMPL_IF channel_author_name><TMPL_VAR channel_author_name ESCAPE="HTML"><TMPL_ELSE><TMPL_IF channel_author><TMPL_VAR channel_author ESCAPE="HTML"><TMPL_ELSE><TMPL_VAR channel_name ESCAPE="HTML"></TMPL_IF></TMPL_IF></TMPL_IF></TMPL_IF></name>
+   <uri><TMPL_VAR channel_link ESCAPE="HTML"></uri>
+  </author>
+ </entry>
+</TMPL_LOOP>
+</feed>
