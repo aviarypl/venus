@@ -119,7 +119,7 @@ def writeCache(feed_uri, feed_info, data):
     elif data.status == 410:
         log.warning("Feed %s gone", feed_uri)
     elif data.status == 408:
-        log.warning("Feed %s timed out (408)", feed_uri)
+        log.info("Feed %s timed out (408)", feed_uri)
     elif data.status >= 500:
         log.info("Server error %d while updating feed %s", data.status, feed_uri)
     elif data.status >= 400:
