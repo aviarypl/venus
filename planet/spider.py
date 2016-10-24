@@ -353,7 +353,7 @@ def httpThread(thread_index, input_queue, output_queue, log):
         except socket.error, e:
             if e.__class__.__name__.lower()=='timeout':
                 feed.headers['status'] = '408'
-                log.warn("Timeout in thread-%d", thread_index)
+                log.info("Timeout in thread-%d", thread_index)
             else:
                 log.error("HTTP Error: %s in thread-%d", str(e), thread_index)
         except Exception, e:
