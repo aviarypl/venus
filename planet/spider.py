@@ -350,6 +350,8 @@ def httpThread(thread_index, input_queue, output_queue, log):
                 uri, thread_index)
         except httplib2.HttpLib2Error, e:
             log.error("HttpLib2Error: %s via %d", str(e), thread_index)
+        except socket.gaierror, e:
+            log.error("socket.gaierror: %s - %s (thread %d)", uri, str(e[1]), thread_index)
         except socket.error, e:
             if e.__class__.__name__.lower()=='timeout':
                 feed.headers['status'] = '408'
